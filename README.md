@@ -1,3 +1,3 @@
 # DSAssignment3
 
-Sprinfield Nuclear Power Plant
+Springfield Nuclear Power Plant
