@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.3 (RELEASE-2.4.3-ad3323c; 2019-01-21T17:46:06+0000) JAXWS-RI/2.3.2 JAXWS-API/2.3.2 JAXB-RI/2.3.2 JAXB-API/2.3.2 git-revision#unknown. --><xs:schema xmlns:tns="http://services/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://services/">
+
+<xs:element name="dumpAllCores" type="tns:dumpAllCores"/>
+
+<xs:element name="dumpAllCoresResponse" type="tns:dumpAllCoresResponse"/>
+
+<xs:element name="getPlantStatus" type="tns:getPlantStatus"/>
+
+<xs:element name="getPlantStatusResponse" type="tns:getPlantStatusResponse"/>
+
+<xs:element name="getReactorInfo" type="tns:getReactorInfo"/>
+
+<xs:element name="getReactorInfoResponse" type="tns:getReactorInfoResponse"/>
+
+<xs:element name="meltdownAll" type="tns:meltdownAll"/>
+
+<xs:element name="meltdownAllResponse" type="tns:meltdownAllResponse"/>
+
+<xs:element name="pullOutControlRods" type="tns:pullOutControlRods"/>
+
+<xs:element name="pullOutControlRodsResponse" type="tns:pullOutControlRodsResponse"/>
+
+<xs:element name="restartAll" type="tns:restartAll"/>
+
+<xs:element name="restartAllResponse" type="tns:restartAllResponse"/>
+
+<xs:element name="turnCoreOnOff" type="tns:turnCoreOnOff"/>
+
+<xs:complexType name="dumpAllCores">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="dumpAllCoresResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getReactorInfo">
+<xs:sequence>
+<xs:element name="reactorInfo" type="tns:reactor" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="reactor">
+<xs:sequence>
+<xs:element name="key" type="xs:int"/>
+<xs:element name="reactorID" type="xs:int"/>
+<xs:element name="sector" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getReactorInfoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:reactor" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="turnCoreOnOff">
+<xs:sequence>
+<xs:element name="coreID" type="xs:int"/>
+<xs:element name="onOff" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pullOutControlRods">
+<xs:sequence>
+<xs:element name="reactorID" type="xs:int"/>
+<xs:element name="amountToPullOut" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pullOutControlRodsResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="restartAll">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="restartAllResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPlantStatus">
+<xs:sequence>
+<xs:element name="requestedData" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPlantStatusResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="meltdownAll">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="meltdownAllResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
