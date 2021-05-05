@@ -83,5 +83,32 @@ int Reactor3 = 9;
         }
         return amountLeft;
     }
+    
+    public String getPlantStatus(String requestedData){
+        
+        String message;
+        String c1 = Integer.toString(Core1);
+        String c2 = Integer.toString(Core2);
+        String c3 = Integer.toString(Core3);
+        
+        String r1 = Integer.toString(Reactor1);
+        String r2 = Integer.toString(Reactor2);
+        String r3 = Integer.toString(Reactor3);
+        
+        if( requestedData == "CoreStats"){
+            
+           message = "Core Activity Status" + "\nCore 1 : " + c1 + "\nCore 2 : " + c2 + "\nCore 3 : " + c3 ;
+         
+        } else if ( requestedData == "ReactorStats"){
+          
+            message = "Reactor Activity Status" + "\nReactor 1 Active Rods: " + r1 + "\nReactor 2 Active Rods : " + r2 + "\nReactor 3 Active Rods : " + r3 ;
+            
+        } else{
+            
+            message = "Invalid data request";
+        }
+        
+        return message;
+    }
 }
 
