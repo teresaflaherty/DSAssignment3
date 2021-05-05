@@ -18,34 +18,63 @@ public class Reactor {
        double radiation;
        double Watts;
 
-    public Reactor(int ReactorID) {
+    public Reactor(int ReactorID, int ReactorKey, String Sector) {
         this.ReactorID = ReactorID;
         this.ReactorKey = ReactorKey;
         this.Sector = Sector;
         this.temp = ReactorID * 1251684;
         this.radiation = 54984 * temp;
+        this.Watts = temp * radiation;
     }
 
-    public void key(int ReactorKey) {
+    public void setReactorID(int ReactorID){
+        this.ReactorID = ReactorID;
+    }
+    public void setKey(int ReactorKey) {
         this.ReactorKey = ReactorKey;
-
     }
 
-    public void sector(String Sector){
+    public void setSector(String Sector){
         this.Sector = Sector;
     }
 
-    public void temp(){
+    public void setTemp(){
 
         this.temp = ReactorID * 1251684;      
     }
 
-    public void rads(){
+    public void setRads(){
         this.radiation = 54984 * temp;
 
     }
 
-    public void Watts(){
+    public void setWatts(){
       this.Watts = temp * radiation;
+    } 
+    
+    
+    public int getReactorID(){
+    return ReactorID;
+    }
+    public int getKey() {
+       return ReactorKey;
+    }
+
+    public String getSector(){
+        return Sector;
+    }
+
+    public double getTemp(){
+
+        return temp;     
+    }
+
+    public double getRads(){
+        return radiation;
+
+    }
+
+    public double getWatts(){
+      return Watts;
     } 
 }
