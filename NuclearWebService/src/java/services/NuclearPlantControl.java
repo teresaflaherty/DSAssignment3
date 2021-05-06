@@ -64,8 +64,11 @@ public class NuclearPlantControl {
         Core1 = 1;
         Core2 = 1;
         Core3 = 1;
+       Reactor1 = 9;
+    Reactor2 = 9;
+   Reactor3 = 9;
         
-        String message = "All cores restarted";
+        String message = "All cores & reactors restarted";
         return  message;
     }
 
@@ -126,7 +129,7 @@ public class NuclearPlantControl {
          
         } else if ( requestedData.equals("ReactorStats")){
           
-            message = "Reactor Activity Status" + "\nReactor 1 Active Rods: " + r1 + "\nReactor 2 Active Rods : " + r2 + "\nReactor 3 Active Rods : " + r3 ;
+            message = "Reactor Activity Status" + "\n> Reactor 1 Active Rods: " + r1 + "\n> Reactor 2 Active Rods : " + r2 + "\n> Reactor 3 Active Rods : " + r3 ;
             
         } else{
             
