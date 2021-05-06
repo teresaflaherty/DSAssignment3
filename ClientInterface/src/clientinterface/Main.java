@@ -136,7 +136,48 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+   private static String dumpAllCores() {
+        clientinterface.NuclearPlantControl_Service service = new clientinterface.NuclearPlantControl_Service();
+        clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
+        return port.dumpAllCores();
+    }
 
+    private static String getPlantStatus(java.lang.String requestedData) {
+        clientinterface.NuclearPlantControl_Service service = new clientinterface.NuclearPlantControl_Service();
+        clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
+        return port.getPlantStatus(requestedData);
+    }
+
+    private static Reactor getReactorInfo(clientinterface.Reactor reactorInfo) {
+        clientinterface.NuclearPlantControl_Service service = new clientinterface.NuclearPlantControl_Service();
+        clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
+        return port.getReactorInfo(reactorInfo);
+    }
+
+    private static String meltdownAll() {
+        clientinterface.NuclearPlantControl_Service service = new clientinterface.NuclearPlantControl_Service();
+        clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
+        return port.meltdownAll();
+    }
+
+    private static int pullOutControlRods(int reactorID, int amountToPullOut) {
+        clientinterface.NuclearPlantControl_Service service = new clientinterface.NuclearPlantControl_Service();
+        clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
+        return port.pullOutControlRods(reactorID, amountToPullOut);
+    }
+
+    private static String restartAll() {
+        clientinterface.NuclearPlantControl_Service service = new clientinterface.NuclearPlantControl_Service();
+        clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
+        return port.restartAll();
+    }
+
+    private static void turnCoreOnOff(int coreID, int onOff) {
+        clientinterface.NuclearPlantControl_Service service = new clientinterface.NuclearPlantControl_Service();
+        clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
+        port.turnCoreOnOff(coreID, onOff);
+    }
+    
     public void logMessage(String text, int style)
     {
          StyledDocument doc = jTextPane1.getStyledDocument();
@@ -189,7 +230,7 @@ public class Main extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
        logMessage("Just a simple status message", 0);
-       logMessage("A success message", 1);
+       logMessage(dumpAllCores(), 1);
        logMessage("A warning message", 2);
        logMessage("An error message", 3);
        
@@ -239,4 +280,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
+
+ 
+    
 }
