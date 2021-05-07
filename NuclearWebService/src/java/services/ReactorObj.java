@@ -10,15 +10,17 @@ package services;
  *
  * @author teresaflaherty
  */
-public class Reactor {
+public class ReactorObj {
     int ReactorID;
     int ReactorKey;
     String Sector;
     double temp;
     double radiation;
     double Watts;
-
-    public Reactor(int ReactorID, int ReactorKey, String Sector) {
+public ReactorObj()
+{
+}
+    public ReactorObj(int ReactorID, int ReactorKey, String Sector) {
         this.ReactorID = ReactorID;
         this.ReactorKey = ReactorKey;
         this.Sector = Sector;

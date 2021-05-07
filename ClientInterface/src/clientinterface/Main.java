@@ -153,7 +153,7 @@ public class Main extends javax.swing.JFrame {
         return port.getPlantStatus(requestedData);
     }
 
-    private static Reactor getReactorInfo(clientinterface.Reactor reactorInfo) {
+    private static ReactorObj getReactorInfo(clientinterface.ReactorObj reactorInfo) {
         clientinterface.NuclearPlantControl_Service service = new clientinterface.NuclearPlantControl_Service();
         clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.getReactorInfo(reactorInfo);
@@ -182,6 +182,8 @@ public class Main extends javax.swing.JFrame {
         clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
         port.turnCoreOnOff(coreID, onOff);
     }
+    
+
 
     public void logMessage(String text, int style) {
         StyledDocument doc = jTextPane1.getStyledDocument();
@@ -260,6 +262,16 @@ public class Main extends javax.swing.JFrame {
                 logMessage("> "+stat, 1); 
             }
         }
+        
+        ReactorObj r1 = new ReactorObj(1234, 5445, "Four");
+        
+        r1 = getReactorInfo(r1);
+        
+        logMessage("\nFetching Info from Reactor 1", 4);
+        logMessage("> Temperature: " + (Double.toString(r1.temp)), 1);
+        logMessage("> Radiation: " + (Double.toString(r1.radiation)), 1);
+        logMessage("> Watts: " + (Double.toString(r1.Watts)), 1);
+        
         logMessage("\nTrying to pull out all control rods from reactor 1", 4);
         logMessage("> Sucess, pulled out 9 rods, " + (Integer.toString(pullOutControlRods(1,9))) + " left",1);
         logMessage("\nTrying to pull out all control rods from reactor 2", 4);
@@ -372,5 +384,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
+
+
 
 }

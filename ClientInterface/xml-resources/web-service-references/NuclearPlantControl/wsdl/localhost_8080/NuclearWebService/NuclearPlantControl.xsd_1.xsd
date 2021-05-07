@@ -38,11 +38,11 @@
 
 <xs:complexType name="getReactorInfo">
 <xs:sequence>
-<xs:element name="reactorInfo" type="tns:reactor" minOccurs="0"/>
+<xs:element name="reactorInfo" type="tns:reactorObj" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="reactor">
+<xs:complexType name="reactorObj">
 <xs:sequence>
 <xs:element name="key" type="xs:int"/>
 <xs:element name="reactorID" type="xs:int"/>
@@ -52,7 +52,7 @@
 
 <xs:complexType name="getReactorInfoResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:reactor" minOccurs="0"/>
+<xs:element name="return" type="tns:reactorObj" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -76,6 +76,16 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="restartAll">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="restartAllResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="getPlantStatus">
 <xs:sequence>
 <xs:element name="requestedData" type="xs:string" minOccurs="0"/>
@@ -83,16 +93,6 @@
 </xs:complexType>
 
 <xs:complexType name="getPlantStatusResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="restartAll">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="restartAllResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
