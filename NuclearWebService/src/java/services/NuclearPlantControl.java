@@ -9,6 +9,7 @@ import javax.jws.Oneway;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import java.util.Random;
 
 /**
  *
@@ -145,6 +146,12 @@ public class NuclearPlantControl {
     @WebMethod(operationName = "getReactorInfo")
     public Reactor getReactorInfo(@WebParam(name = "reactorInfo") Reactor reactorInfo) {
         //TODO write your implementation code here:
-        return null;
+        
+        Random ran = new Random();
+        int x = ran.nextInt(6) + 5;
+        reactorInfo.setKey(x);
+        reactorInfo.setSector("four");
+        
+        return reactorInfo;
     }
 }
