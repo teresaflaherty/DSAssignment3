@@ -19,7 +19,7 @@
     <target name="wsimport-client-NuclearPlantControl" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/NuclearPlantControl"/>
         <property name="wsdl-NuclearPlantControl" location="xml-resources/web-service-references/NuclearPlantControl/wsdl/localhost_8080/NuclearWebService/NuclearPlantControl.wsdl"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/NuclearPlantControl" destdir="${build.generated.dir}/jax-wsCache/NuclearPlantControl" wsdl="${wsdl-NuclearPlantControl}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/NuclearWebService/NuclearPlantControl?wsdl" xnocompile="true" xendorsed="true" package="clientinterface">
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/NuclearPlantControl" destdir="${build.generated.dir}/jax-wsCache/NuclearPlantControl" wsdl="${wsdl-NuclearPlantControl}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/NuclearWebService/NuclearPlantControl?WSDL" xnocompile="true" xendorsed="true">
             <depends file="${wsdl-NuclearPlantControl}"/>
             <produces dir="${build.generated.dir}/jax-wsCache/NuclearPlantControl"/>
         </wsimport>
@@ -31,7 +31,7 @@
     </target>
     <target name="wsimport-client-clean-NuclearPlantControl" depends="-init-project">
         <delete dir="${build.generated.dir}/jax-wsCache/NuclearPlantControl"/>
-        <delete dir="${build.generated.sources.dir}/jax-ws/clientinterface"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/services"/>
     </target>
     <target name="wsimport-client-generate" depends="wsimport-client-NuclearPlantControl"/>
 </project>

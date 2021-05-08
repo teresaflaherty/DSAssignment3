@@ -4,6 +4,18 @@
 <xsd:import namespace="http://services/" schemaLocation="http://localhost:8080/NuclearWebService/NuclearPlantControl?xsd=1"/>
 </xsd:schema>
 </types>
+<message name="restartAll">
+<part name="parameters" element="tns:restartAll"/>
+</message>
+<message name="restartAllResponse">
+<part name="parameters" element="tns:restartAllResponse"/>
+</message>
+<message name="dumpAllCores">
+<part name="parameters" element="tns:dumpAllCores"/>
+</message>
+<message name="dumpAllCoresResponse">
+<part name="parameters" element="tns:dumpAllCoresResponse"/>
+</message>
 <message name="pullOutControlRods">
 <part name="parameters" element="tns:pullOutControlRods"/>
 </message>
@@ -16,26 +28,14 @@
 <message name="meltdownAllResponse">
 <part name="parameters" element="tns:meltdownAllResponse"/>
 </message>
-<message name="dumpAllCores">
-<part name="parameters" element="tns:dumpAllCores"/>
-</message>
-<message name="dumpAllCoresResponse">
-<part name="parameters" element="tns:dumpAllCoresResponse"/>
-</message>
-<message name="restartAll">
-<part name="parameters" element="tns:restartAll"/>
-</message>
-<message name="restartAllResponse">
-<part name="parameters" element="tns:restartAllResponse"/>
-</message>
-<message name="turnCoreOnOff">
-<part name="parameters" element="tns:turnCoreOnOff"/>
-</message>
 <message name="getPlantStatus">
 <part name="parameters" element="tns:getPlantStatus"/>
 </message>
 <message name="getPlantStatusResponse">
 <part name="parameters" element="tns:getPlantStatusResponse"/>
+</message>
+<message name="turnCoreOnOff">
+<part name="parameters" element="tns:turnCoreOnOff"/>
 </message>
 <message name="getReactorInfo">
 <part name="parameters" element="tns:getReactorInfo"/>
@@ -44,6 +44,14 @@
 <part name="parameters" element="tns:getReactorInfoResponse"/>
 </message>
 <portType name="NuclearPlantControl">
+<operation name="restartAll">
+<input wsam:Action="http://services/NuclearPlantControl/restartAllRequest" message="tns:restartAll"/>
+<output wsam:Action="http://services/NuclearPlantControl/restartAllResponse" message="tns:restartAllResponse"/>
+</operation>
+<operation name="dumpAllCores">
+<input wsam:Action="http://services/NuclearPlantControl/dumpAllCoresRequest" message="tns:dumpAllCores"/>
+<output wsam:Action="http://services/NuclearPlantControl/dumpAllCoresResponse" message="tns:dumpAllCoresResponse"/>
+</operation>
 <operation name="pullOutControlRods">
 <input wsam:Action="http://services/NuclearPlantControl/pullOutControlRodsRequest" message="tns:pullOutControlRods"/>
 <output wsam:Action="http://services/NuclearPlantControl/pullOutControlRodsResponse" message="tns:pullOutControlRodsResponse"/>
@@ -52,20 +60,12 @@
 <input wsam:Action="http://services/NuclearPlantControl/meltdownAllRequest" message="tns:meltdownAll"/>
 <output wsam:Action="http://services/NuclearPlantControl/meltdownAllResponse" message="tns:meltdownAllResponse"/>
 </operation>
-<operation name="dumpAllCores">
-<input wsam:Action="http://services/NuclearPlantControl/dumpAllCoresRequest" message="tns:dumpAllCores"/>
-<output wsam:Action="http://services/NuclearPlantControl/dumpAllCoresResponse" message="tns:dumpAllCoresResponse"/>
-</operation>
-<operation name="restartAll">
-<input wsam:Action="http://services/NuclearPlantControl/restartAllRequest" message="tns:restartAll"/>
-<output wsam:Action="http://services/NuclearPlantControl/restartAllResponse" message="tns:restartAllResponse"/>
-</operation>
-<operation name="turnCoreOnOff">
-<input wsam:Action="http://services/NuclearPlantControl/turnCoreOnOff" message="tns:turnCoreOnOff"/>
-</operation>
 <operation name="getPlantStatus">
 <input wsam:Action="http://services/NuclearPlantControl/getPlantStatusRequest" message="tns:getPlantStatus"/>
 <output wsam:Action="http://services/NuclearPlantControl/getPlantStatusResponse" message="tns:getPlantStatusResponse"/>
+</operation>
+<operation name="turnCoreOnOff">
+<input wsam:Action="http://services/NuclearPlantControl/turnCoreOnOff" message="tns:turnCoreOnOff"/>
 </operation>
 <operation name="getReactorInfo">
 <input wsam:Action="http://services/NuclearPlantControl/getReactorInfoRequest" message="tns:getReactorInfo"/>
@@ -74,6 +74,24 @@
 </portType>
 <binding name="NuclearPlantControlPortBinding" type="tns:NuclearPlantControl">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+<operation name="restartAll">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="dumpAllCores">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="pullOutControlRods">
 <soap:operation soapAction=""/>
 <input>
@@ -92,16 +110,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="dumpAllCores">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="restartAll">
+<operation name="getPlantStatus">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -115,15 +124,6 @@
 <input>
 <soap:body use="literal"/>
 </input>
-</operation>
-<operation name="getPlantStatus">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
 </operation>
 <operation name="getReactorInfo">
 <soap:operation soapAction=""/>

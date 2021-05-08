@@ -17,9 +17,12 @@ public class ReactorObj {
     double temp;
     double radiation;
     double Watts;
-public ReactorObj()
-{
-}
+
+    public ReactorObj() {
+
+    }
+    
+    
     public ReactorObj(int ReactorID, int ReactorKey, String Sector) {
         this.ReactorID = ReactorID;
         this.ReactorKey = ReactorKey;

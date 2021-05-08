@@ -142,44 +142,44 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private static String dumpAllCores() {
-        clientinterface.NuclearPlantControl_Service service = new clientinterface.NuclearPlantControl_Service();
-        clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
+        services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
+        services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.dumpAllCores();
     }
 
     private static String getPlantStatus(java.lang.String requestedData) {
-        clientinterface.NuclearPlantControl_Service service = new clientinterface.NuclearPlantControl_Service();
-        clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
+        services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
+        services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.getPlantStatus(requestedData);
     }
 
-    private static ReactorObj getReactorInfo(clientinterface.ReactorObj reactorInfo) {
-        clientinterface.NuclearPlantControl_Service service = new clientinterface.NuclearPlantControl_Service();
-        clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
+    private static services.ReactorObj getReactorInfo(services.ReactorObj reactorInfo) {
+        services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
+        services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.getReactorInfo(reactorInfo);
     }
 
     private static String meltdownAll() {
-        clientinterface.NuclearPlantControl_Service service = new clientinterface.NuclearPlantControl_Service();
-        clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
+        services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
+        services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.meltdownAll();
     }
 
     private static int pullOutControlRods(int reactorID, int amountToPullOut) {
-        clientinterface.NuclearPlantControl_Service service = new clientinterface.NuclearPlantControl_Service();
-        clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
+        services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
+        services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.pullOutControlRods(reactorID, amountToPullOut);
     }
 
     private static String restartAll() {
-        clientinterface.NuclearPlantControl_Service service = new clientinterface.NuclearPlantControl_Service();
-        clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
+        services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
+        services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.restartAll();
     }
 
     private static void turnCoreOnOff(int coreID, int onOff) {
-        clientinterface.NuclearPlantControl_Service service = new clientinterface.NuclearPlantControl_Service();
-        clientinterface.NuclearPlantControl port = service.getNuclearPlantControlPort();
+        services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
+        services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         port.turnCoreOnOff(coreID, onOff);
     }
     
@@ -263,7 +263,7 @@ public class Main extends javax.swing.JFrame {
             }
         }
         
-        ReactorObj r1 = new ReactorObj(1234, 5445, "Four");
+        services.ReactorObj r1 = new services.ReactorObj();
         
         r1 = getReactorInfo(r1);
         
