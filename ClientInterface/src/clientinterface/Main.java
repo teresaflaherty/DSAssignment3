@@ -5,13 +5,10 @@
  */
 package clientinterface;
 
+// imports needed for various methods
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.Timer;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
@@ -140,43 +137,60 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    // Web Service function to dump all reactor cores
+    // returns a string
     private static String dumpAllCores() {
         services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
         services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.dumpAllCores();
     }
 
+    // Web Service function to get the plant status
+    // Takes a string - either "CoreStats" or "ReactorStats"
+    // returns a string
     private static String getPlantStatus(java.lang.String requestedData) {
         services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
         services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.getPlantStatus(requestedData);
     }
 
+    // Web Service function to write noise to the reactor info object
+    // takes a reactor object
+    // returns a reactor object
     private static services.ReactorObj getReactorInfo(services.ReactorObj reactorInfo) {
         services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
         services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.getReactorInfo(reactorInfo);
     }
 
+    // web service function to initiate meltdown of the cores
+    // returns a string
     private static String meltdownAll() {
         services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
         services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.meltdownAll();
     }
-
+    
+    // web service function to pull out x amount of control rods from a specific reactor
+    // takes (int) reactorID and (int) amountToPullOut
+    // returns (int) amount left
     private static int pullOutControlRods(int reactorID, int amountToPullOut) {
         services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
         services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.pullOutControlRods(reactorID, amountToPullOut);
     }
 
+    // Web service function to restart all reactors & cores
+    // returns a string
     private static String restartAll() {
         services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
         services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.restartAll();
     }
 
+    //turns a core on or off
+    //takes a (int) core ID and (int) onOff
     private static void turnCoreOnOff(int coreID, int onOff) {
         services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
         services.NuclearPlantControl port = service.getNuclearPlantControlPort();
@@ -185,9 +199,14 @@ public class Main extends javax.swing.JFrame {
     
 
 
+    // a logging function which can append styled text to
+    // the jTextPanel. Contains multiple hard-coded styles.
+    // takes a string text and an integer to select style.
     public void logMessage(String text, int style) {
         StyledDocument doc = jTextPane1.getStyledDocument();
-
+        
+        //Define different styles
+        
         SimpleAttributeSet normal = new SimpleAttributeSet();
         StyleConstants.setFontSize(normal, 19);
         StyleConstants.setForeground(normal, Color.black);
@@ -208,9 +227,11 @@ public class Main extends javax.swing.JFrame {
         SimpleAttributeSet allgood = new SimpleAttributeSet();
         StyleConstants.setFontSize(allgood, 19);
         StyleConstants.setForeground(allgood, Color.green);
-
+        
+        // set a default fallback style
         SimpleAttributeSet textstyle = normal;
-
+        
+        // switch between different styles
         switch (style) {
             case 0:
                 textstyle = normal;
@@ -230,9 +251,9 @@ public class Main extends javax.swing.JFrame {
             default:
                 break;
         }
-
+        
+        // try to append to the jtextPanel
         try {
-
             doc.insertString(doc.getLength(), text + "\n", textstyle);
 
         } catch (BadLocationException ex) {
@@ -240,40 +261,54 @@ public class Main extends javax.swing.JFrame {
         }
     }
 
+    //action listener for the autmated web service demo
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+        // First init reactor & Core restart
         logMessage("Restarting All Reactors & Cores...", 4);
         logMessage("> "+restartAll(), 1);
         
+        // Fetch the reactor status
         logMessage("\nFetching reactor status...", 4);
         logMessage(getPlantStatus("ReactorStats"), 0);
 
+        // fetch the core status
         logMessage("\nFetching core status...", 4);
         String str = getPlantStatus("CoreStats");
+        
+        // status comes as a multiline string
+        // can split it and change line colour based on status code
         String[] arrStr = str.split("\n", 0);
         for (String stat : arrStr) {
             if (stat.contains("0")) {
+                
+                //orange message - warning
                 logMessage("> "+stat, 2);
             } else if (stat.contains("11")) {
+                
+                //red message - bad/error
                 logMessage("> "+stat, 3);
             }
             else if(stat.contains("1"))
             {
+                //green message - all good
                 logMessage("> "+stat, 1); 
             }
         }
         
+        //init a ReactorObj
         services.ReactorObj r1 = new services.ReactorObj();
         
+        //call function to scrabmle reactor data
         r1 = getReactorInfo(r1);
         
+        //fetch new scrambled reactor data
         logMessage("\nAttempting to write noise to reactor 1 data", 4);
         logMessage("> Sector: " + r1.getSector() , 1);
         logMessage("> Key: " + Integer.toString(r1.getKey()) , 1);
         logMessage("> ID: " + Integer.toString(r1.getReactorID()) , 1);
-        //logMessage("> Radiation: " + (Double.toString(r1.radiation)), 1);
-        //logMessage("> Watts: " + (Double.toString(r1.Watts)), 1);
-        
+
+        // Pull out control rods from every reactor
         logMessage("\nTrying to pull out all control rods from reactor 1", 4);
         logMessage("> Sucess, pulled out 9 rods, " + (Integer.toString(pullOutControlRods(1,9))) + " left",1);
         logMessage("\nTrying to pull out all control rods from reactor 2", 4);
@@ -281,12 +316,16 @@ public class Main extends javax.swing.JFrame {
         logMessage("\nTrying to pull out all control rods from reactor 3", 4);
         logMessage("> Sucess, pulled out 9 rods, " + (Integer.toString(pullOutControlRods(3,9))) + " left",1);
         
+        // Dump a core to test
         logMessage("\nDumping Core 1 to test...", 4);
         logMessage("> Core 1 dumped", 1);
         turnCoreOnOff(0, 0);
         
+        // fetch core stat to show core has really been dumped
         logMessage("\nFetching core status...", 4);
         str = getPlantStatus("CoreStats");
+        
+        // core stat is multiline so let's split and parse the status codes
         arrStr = str.split("\n", 0);
         for (String stat : arrStr) {
             if (stat.contains("0")) {
@@ -300,11 +339,15 @@ public class Main extends javax.swing.JFrame {
             }
         }
         
+        // dump all the cores
         logMessage("\nDumping all cores...", 4);
         logMessage("> "+dumpAllCores(), 1);
         
+        // fetch the core status
         logMessage("\nFetching core status...", 4);
         str = getPlantStatus("CoreStats");
+        
+        //split the core status and parse the core statuses
         arrStr = str.split("\n", 0);
         for (String stat : arrStr) {
             if (stat.contains("0")) {
@@ -318,15 +361,18 @@ public class Main extends javax.swing.JFrame {
             }
         }
         
-        // Need reactor info here
-        
+        // everything wortks, we have full control of the reactor
         logMessage("\n> Full control of Springfield Nuclear Power Plant achieved", 1);
         
+        // reseting the reactors and cores
         logMessage("\nRestoring plant to initial state", 4);
         logMessage("> " + restartAll(), 1);
         
+        // begin meltdown protocol
         logMessage("\nBegining Nuclear Meltdown Protocol...", 4);
         
+        
+        // first pull out all control rods
         logMessage("\nTrying to pull out all control rods from reactor 1", 4);
         logMessage("> Sucess, pulled out 9 rods, " + (Integer.toString(pullOutControlRods(1,9))) + " left",1);
         logMessage("\nTrying to pull out all control rods from reactor 2", 4);
@@ -334,10 +380,10 @@ public class Main extends javax.swing.JFrame {
         logMessage("\nTrying to pull out all control rods from reactor 3", 4);
         logMessage("> Sucess, pulled out 9 rods, " + (Integer.toString(pullOutControlRods(3,9))) + " left",1);
         
+        // begin melting the cores down
         logMessage("\n> " + meltdownAll(), 3);
         
-        // get reactor info
-        
+        // license warning message
         logMessage("\n> You are using the FREE STUXnet version, to initiate global nuclear meltdowns please buy the premium license", 0);
 
     }//GEN-LAST:event_jButton1ActionPerformed
