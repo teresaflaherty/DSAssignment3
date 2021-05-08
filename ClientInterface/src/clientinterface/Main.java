@@ -267,10 +267,12 @@ public class Main extends javax.swing.JFrame {
         
         r1 = getReactorInfo(r1);
         
-        logMessage("\nFetching Info from Reactor 1", 4);
-        logMessage("> Temperature: " + (Double.toString(r1.temp)), 1);
-        logMessage("> Radiation: " + (Double.toString(r1.radiation)), 1);
-        logMessage("> Watts: " + (Double.toString(r1.Watts)), 1);
+        logMessage("\nAttempting to write noise to reactor 1 data", 4);
+        logMessage("> Sector: " + r1.getSector() , 1);
+        logMessage("> Key: " + Integer.toString(r1.getKey()) , 1);
+        logMessage("> ID: " + Integer.toString(r1.getReactorID()) , 1);
+        //logMessage("> Radiation: " + (Double.toString(r1.radiation)), 1);
+        //logMessage("> Watts: " + (Double.toString(r1.Watts)), 1);
         
         logMessage("\nTrying to pull out all control rods from reactor 1", 4);
         logMessage("> Sucess, pulled out 9 rods, " + (Integer.toString(pullOutControlRods(1,9))) + " left",1);

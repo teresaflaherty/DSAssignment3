@@ -142,16 +142,16 @@ public class NuclearPlantControl {
 
     /**
      * Web service operation
+     * @param reactorInfo
      */
     @WebMethod(operationName = "getReactorInfo")
     public ReactorObj getReactorInfo(@WebParam(name = "reactorInfo") ReactorObj reactorInfo) {
         //TODO write your implementation code here:
-        ReactorObj r1 = new ReactorObj(reactorInfo.ReactorID, reactorInfo.ReactorKey, reactorInfo.Sector);
-        //Random ran = new Random();
-        //int x = ran.nextInt(6) + 5;
-        //reactorInfo.setKey(x);
-        //reactorInfo.setSector("four");
         
-        return r1;
+        int x =  (int)(Math.random() * 10000);
+        reactorInfo.setKey(x);
+        reactorInfo.setSector("zxuehnm");
+        
+        return reactorInfo;
     }
 }
