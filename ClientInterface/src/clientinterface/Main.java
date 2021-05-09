@@ -1,7 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author Gabriel Denys (17223857), Teresa Flaherty (17017157), Raymond Mc Creesh (15211428), Eoghan O'Connor(16110625) 
+ *
+ * The purpose of this program is to create a client interface which allows the automated execution
+ * of a SOAP based web service.
+ * 
+ * The client interface is a jFrame.
+ * There is only one button which triggers the whole sequence.
+ * All the data is displayed within a jTextPanel
  */
 package clientinterface;
 
@@ -14,10 +20,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
-/**
- *
- * @author gabed
- */
+
 public class Main extends javax.swing.JFrame {
 
     /**
