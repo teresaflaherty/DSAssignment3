@@ -1,7 +1,12 @@
-//
-//
-//
-//
+/**
+ *
+ * @author Gabriel Denys (17223857), Teresa Flaherty (17017157), Raymond Mc Creesh (15211428), Eoghan O'Connor(16110625) 
+ *
+ * The purpose of this program is to create a Reactor object for the web service to interact with
+ * 
+ * The Reactor class has attributes int:reactorID,ReactorKey  String:Sector  double:temp,radiation,watts
+ * Each attribute has getter and setter methods
+ */
 package services;
 
 public class ReactorObj {
@@ -70,17 +75,17 @@ public class ReactorObj {
         return Sector;
     }
     // Reactor temperature getter function
-    // returns int
+    // returns double
     public double getTemp(){
         return temp;     
     }
     // Reactor radiation getter function
-    // returns int
+    // returns double
     public double getRads(){
         return radiation;
     }
     // Reactor watts getter function
-    // returns int
+    // returns double
     public double getWatts(){
         return Watts;
     } 
