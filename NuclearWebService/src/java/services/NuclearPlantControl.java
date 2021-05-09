@@ -25,9 +25,8 @@ public class NuclearPlantControl {
     int Reactor2 = 9;
     int Reactor3 = 9;
 
-    /**
-     * Web service operation
-     */
+    //Web service function turns a core on or off
+    //takes a (int) core ID and (int) onOff
     @WebMethod(operationName = "turnCoreOnOff")
     @Oneway
     public void turnCoreOnOff(@WebParam(name = "coreID") int coreID, @WebParam(name = "onOff") int onOff) {
@@ -44,9 +43,8 @@ public class NuclearPlantControl {
         }  
     }
 
-    /**
-     * Web service operation
-     */
+    // Web Service function to dump all reactor cores
+    // returns a string
     @WebMethod(operationName = "dumpAllCores")
     public String dumpAllCores() {
         Core1 = 0;
@@ -57,25 +55,23 @@ public class NuclearPlantControl {
         return  message;
     }
 
-    /**
-     * Web service operation
-     */
+    // Web Service function to restart all cores & reactors
+    // returns a string
     @WebMethod(operationName = "restartAll")
     public String restartAll() {
         Core1 = 1;
         Core2 = 1;
         Core3 = 1;
-       Reactor1 = 9;
-    Reactor2 = 9;
-   Reactor3 = 9;
+        Reactor1 = 9;
+        Reactor2 = 9;
+        Reactor3 = 9;
         
         String message = "All cores & reactors restarted";
         return  message;
     }
 
-    /**
-     * Web service operation
-     */
+    // Web Service function to cause a meltdown
+    // returns a string
     @WebMethod(operationName = "meltdownAll")
     public String meltdownAll() {
         Core1 = 11;
@@ -86,9 +82,9 @@ public class NuclearPlantControl {
         return  message;
     }
 
-    /**
-     * Web service operation
-     */
+    // Web Service function to pull out reactor rods
+    // takes two integer values 
+    // returns a integer
     @WebMethod(operationName = "pullOutControlRods")
     public int pullOutControlRods(@WebParam(name = "reactorID") int reactorID, @WebParam(name = "amountToPullOut") int amountToPullOut) {
         int amountLeft = 0;
@@ -110,9 +106,9 @@ public class NuclearPlantControl {
         return amountLeft;
     }
 
-    /**
-     * Web service operation
-     */
+    // Web Service function to get the plant status
+    // Takes a string - either "CoreStats" or "ReactorStats"
+    // returns a string
     @WebMethod(operationName = "getPlantStatus")
     public String getPlantStatus(@WebParam(name = "requestedData") String requestedData) {
         String message;
@@ -140,10 +136,9 @@ public class NuclearPlantControl {
         return message;
     }
 
-    /**
-     * Web service operation
-     * @param reactorInfo
-     */
+    // Web Service function to write noise to the reactor info object
+    // takes a reactor object
+    // returns a reactor object
     @WebMethod(operationName = "getReactorInfo")
     public ReactorObj getReactorInfo(@WebParam(name = "reactorInfo") ReactorObj reactorInfo) {
         //TODO write your implementation code here:
