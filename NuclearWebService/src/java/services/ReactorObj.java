@@ -22,7 +22,7 @@ public class ReactorObj {
 
     }
     
-    // Reactor object constructor function
+    // Reactor object constructor
     // takes two int value and a string
     public ReactorObj(int ReactorID, int ReactorKey, String Sector) {
         this.ReactorID = ReactorID;
@@ -32,60 +32,116 @@ public class ReactorObj {
         this.radiation = 54984 * temp;
         this.Watts = temp * radiation;
     }
-    // Reactor ID setter function
-    // take int value
+    
+    
+    /**
+     * Set a new value for the ReactorID
+     * 
+     * @param ReactorID the new ReactorID value
+     */
     public void setReactorID(int ReactorID){
         this.ReactorID = ReactorID;
     }
-    // Reactor key setter function
-    // take int value
+    
+    
+    /**
+     * Set a new value for the ReactorKey
+     * 
+     * @param ReactorKey the new ReactorKey value
+     */
     public void setKey(int ReactorKey) {
         this.ReactorKey = ReactorKey;
     }
-    // Reactor sector setter function
-    // take String value
+    
+    
+    /**
+     * Set a new value for the Reactor Sector
+     * 
+     * @param Sector the new Sector value
+     */
     public void setSector(String Sector){
         this.Sector = Sector;
     }
-    // Reactor temperature setter function
+    
+    
+    /**
+     * Set a new value for the Temperature
+     */
     public void setTemp(){
         this.temp = ReactorID * 1251684;      
     }
-    // Reactor Radiation setter function
+    
+    
+    /**
+     * Set a new value for the Radiation Level
+     */
     public void setRads(){
         this.radiation = 54984 * temp;
     }
-    // Reactor Watts setter function
+    
+    /**
+     * Set a new value for the Power Output
+     */
     public void setWatts(){
         this.Watts = temp * radiation;
     } 
-    // Reactor ID getter function
-    // returns int
+    
+    
+    /**
+     * Get the value of the ReactorID
+     *
+     * @return the Reactor's ID
+     */
     public int getReactorID(){
         return ReactorID;
     }
-    // Reactor key getter function
-    // returns int    
+    
+    
+    /**
+     * Get the value of the ReactorKey
+     *
+     * @return the Reactor's Key
+     */
     public int getKey() {
         return ReactorKey;
     }
-    // Reactor sector getter function
-    // returns string
+    
+    
+    /**
+     * Get the value of the Reactor Sector
+     *
+     * @return the Reactor's Sector
+     */
     public String getSector(){
         return Sector;
     }
-    // Reactor temperature getter function
-    // returns double
+    
+    
+    /**
+     * Get the value of the Temperature
+     *
+     * @return the Reactor's Temperature
+     */
     public double getTemp(){
         return temp;     
     }
-    // Reactor radiation getter function
-    // returns double
+    
+    
+    /**
+     * Get the value of the Reactor's Radiation Level
+     *
+     * @return the Reactor's Radiation Level
+     */
     public double getRads(){
         return radiation;
     }
-    // Reactor watts getter function
-    // returns double
+    
+    
+    /**
+     * Get the value of the Reactor's Power Output
+     *
+     * @return the Reactor's Power Output
+     */
     public double getWatts(){
         return Watts;
     } 

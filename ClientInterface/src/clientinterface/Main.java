@@ -141,59 +141,90 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    // Web Service function to dump all reactor cores
-    // returns a string
+    
+    /**
+     * Method to call the dumpAllCores operation of the Web Service
+     *
+     * @return the response from the dumpAllCores operation
+     */
     private static String dumpAllCores() {
         services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
         services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.dumpAllCores();
     }
 
-    // Web Service function to get the plant status
-    // Takes a string - either "CoreStats" or "ReactorStats"
-    // returns a string
+    
+    /**
+     * Method to call the getPlantStatus operation of the Web Service
+     * 
+     * @param requestedData the type of data being requested
+     *
+     * @return the response from the getPlantStatus operation
+     */
     private static String getPlantStatus(java.lang.String requestedData) {
         services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
         services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.getPlantStatus(requestedData);
     }
 
-    // Web Service function to write noise to the reactor info object
-    // takes a reactor object
-    // returns a reactor object
+    
+    /**
+     * Method to call the getReactorInfo operation of the Web Service
+     * 
+     * @param reactorInfo the reactor being modified
+     *
+     * @return the response from the getReactorInfo operation
+     */
     private static services.ReactorObj getReactorInfo(services.ReactorObj reactorInfo) {
         services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
         services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.getReactorInfo(reactorInfo);
     }
 
-    // web service function to initiate meltdown of the cores
-    // returns a string
+    /**
+     * Method to call the meltdownAll operation of the Web Service
+     *
+     * @return the response from the meltdownAll operation
+     */
     private static String meltdownAll() {
         services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
         services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.meltdownAll();
     }
     
-    // web service function to pull out x amount of control rods from a specific reactor
-    // takes (int) reactorID and (int) amountToPullOut
-    // returns (int) amount left
+    /**
+     * Method to call the pullOutControlRods operation of the Web Service
+     * 
+     * @param reactorID the ID of the Reactor whose control rods will be pulled out
+     * @param amountToPullOut the number of rods to be pulled out of the Reactor
+     *
+     * @return the response from the pullOutControlRods operation
+     */
     private static int pullOutControlRods(int reactorID, int amountToPullOut) {
         services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
         services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.pullOutControlRods(reactorID, amountToPullOut);
     }
 
-    // Web service function to restart all reactors & cores
-    // returns a string
+    /**
+     * Method to call the restartAll operation of the Web Service
+     *
+     * @return the response from the restartAll operation
+     */
     private static String restartAll() {
         services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
         services.NuclearPlantControl port = service.getNuclearPlantControlPort();
         return port.restartAll();
     }
 
-    //turns a core on or off
-    //takes a (int) core ID and (int) onOff
+    /**
+     * Method to call the turnCoreOnOff operation of the Web Service
+     * 
+     * @param coreID the ID of the Core that will be turned on or off
+     * @param onOff the power setting to change the Core to
+     *
+     * @return the response from the turnCoreOnOff operation
+     */
     private static void turnCoreOnOff(int coreID, int onOff) {
         services.NuclearPlantControl_Service service = new services.NuclearPlantControl_Service();
         services.NuclearPlantControl port = service.getNuclearPlantControlPort();
@@ -201,10 +232,13 @@ public class Main extends javax.swing.JFrame {
     }
     
 
-
-    // a logging function which can append styled text to
-    // the jTextPanel. Contains multiple hard-coded styles.
-    // takes a string text and an integer to select style.
+    /**
+     * A logging function which can append styled text to the jTextPanel. Contains multiple hard-coded styles.
+     * Takes a string text and an integer to select style.
+     * 
+     * @param text the text to be logged
+     * @param style the style to make the text in the log
+     */
     public void logMessage(String text, int style) {
         StyledDocument doc = jTextPane1.getStyledDocument();
         
@@ -264,7 +298,12 @@ public class Main extends javax.swing.JFrame {
         }
     }
 
-    //action listener for the autmated web service demo
+
+    /**
+     * Action listener for the automated Web Service demo
+     * 
+     * @param evt the Action Event
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         // First init reactor & Core restart
@@ -391,7 +430,10 @@ public class Main extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
     /**
+     * Main function
+     * 
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -435,7 +477,5 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
-
-
 
 }
